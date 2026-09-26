@@ -31,6 +31,24 @@ Docker'а на ноутбуке нет? Тогда локально работа
 | `make seed` | перезалить учебные данные |
 | `make help` | список всех команд |
 
+## Как проверить, что сервис жив
+
+После `make up` дождитесь, пока `make ps` покажет `backend` и `db` в состоянии `healthy`:
+в `docker-compose.yml` сервис `db` имеет healthcheck (`mysqladmin ping -h 127.0.0.1 -ulab -plab`,
+5s/5s/20), и `backend` стартует только после успешного healthcheck `db`
+(`depends_on: condition: service_healthy`).
+
+```bash
+make ps                                 # состояние контейнеров (docker compose ps)
+curl http://localhost:8080/health       # GET /health — живость backend
+make logs                               # docker compose logs -f backend
+make test                               # PHPUnit (локально или в backend-контейнере)
+make lint                               # php -l по backend/ и tests/
+```
+
+Если поднимали контейнеры не через Makefile, healthcheck MySQL можно дёрнуть
+напрямую: `docker compose exec db mysqladmin ping -h 127.0.0.1 -ulab -plab`.
+
 ## API
 
 | Метод | Путь | Зачем |
