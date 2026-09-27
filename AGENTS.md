@@ -1,13 +1,13 @@
 # AGENTS.md
 
 ## Что за сервис
-Предварительная оценка заявки на заём под ПТС: принимает заявку, считает LTV
-(сумма / оценочная стоимость) и возвращает решение `approve` / `review` / `reject`.
-Учебный проект. Все данные синтетические.
+Учебный сервис предварительной оценки заявки на заём под ПТС.
+Принимает заявку, считает LTV (сумма / оценочная стоимость) и возвращает решение `approve` / `review` / `reject`.
+Все данные синтетические.
 
 ## Как запустить и проверить
 ```bash
-make up        # docker compose up -d --build: сервис на http://localhost:8080, база MySQL 8
+make up        # docker compose up -d --build: сервис на http://localhost:8080, MySQL 8
 make test      # PHPUnit
 make lint      # php -l по backend/ и tests/
 curl http://localhost:8080/health
@@ -15,7 +15,7 @@ curl http://localhost:8080/health
 Без Docker: `composer install`, затем `make test` и `make lint` работают локально.
 
 ## Структура
-- `backend/` — PHP 8.3 + Slim: `src/Domain` (правила), `src/Http`, `src/Repository`, `config/rules.php`, `public/`
+- `backend/` — PHP 8.3 + Slim: `src/Domain`, `src/Http`, `src/Repository`, `src/Support`, `config/rules.php`, `public/`
 - `frontend/` — форма заявки на ванильном JS
 - `db/` — `schema.sql` и `seed.sql` (синтетические заявки)
 - `tests/` — PHPUnit: `Unit/` и `Feature/`
