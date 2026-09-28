@@ -1,5 +1,5 @@
 description: Строит план изменений до кода. Пишет только в docs/plan/.
-mode: subagent
+mode: primaty
 permission:
 edit:
 "*": deny
