@@ -1,0 +1,1 @@
+Порог пробега задаётся в backend/config/rules.php:23 — max_mileage_km => 500000. Используется в backend/src/Domain/ApplicationValidator.php:44.
