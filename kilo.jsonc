@@ -8,6 +8,17 @@
   "permission": {
     "read": { "*": "allow", "*.env*": "deny" },
     "edit": { "*": "allow", "*.env*": "deny", "kilo.jsonc": "deny" },
-    "bash": { "*": "ask", "git *": "allow", "git push*": "ask", "make *": "allow", "*.env*": "deny", "*reset_db*": "deny", "rm -rf*": "deny", "git push --force*" }
+    "bash": { "*": "ask", "ast-index": "allow", "git *": "allow", "git push*": "ask", "make *": "allow", "*.env*": "deny", "*reset_db*": "deny", "rm -rf*": "deny", "git push --force*": "allow" }
+  },
+  "instructions": [
+    "~/.config/kilo/rules/ast-index.md",
+    "~/.config/kilo/rules/caveman-output.md"
+  ],
+  "mcp": {
+    "playwright": {
+      "type": "local",
+      "command": ["npx", "-y", "@playwright/mcp@latest"],
+      "enabled": true
+    }
   }
 }
