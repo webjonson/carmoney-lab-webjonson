@@ -20,7 +20,7 @@ return [
     'vehicle' => [
         'min_year' => 1990,
         'max_age_years' => 20,
-        'max_mileage_km' => 500000,
+        'max_mileage_km' => 450000,
     ],
 
     'amount' => [
